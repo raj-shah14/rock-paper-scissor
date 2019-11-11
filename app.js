@@ -1,5 +1,5 @@
 
-
+// Declaring variables
 var userScore = 0;
 var compScore = 0;
 const userScore_span = document.getElementById("user-score");
@@ -14,6 +14,7 @@ const sci_div = document.getElementById("s");
 
 var mapping = {"r":"Rock","p":"Paper","s":"Scissor"};
 
+// When user wins update the User score
 function win(user,computer){
     userScore += 1;
     userScore_span.innerHTML = userScore;
@@ -23,6 +24,7 @@ function win(user,computer){
     setTimeout(function(){document.getElementById(user).classList.remove('green-glow')},400);
 }
 
+//When user loses, update the computer score
 function lose(user,computer){
     compScore += 1;
     userScore_span.innerHTML = userScore;
@@ -33,6 +35,7 @@ function lose(user,computer){
 
 }
 
+// When game is tied
 function draw(user){
     result_div.innerHTML = "It's a Draw";
     document.getElementById(user).classList.add('grey-glow');
@@ -41,10 +44,12 @@ function draw(user){
 }
 
 
-
-
+//Game logic
 function game(val){
+    //Random move for Computer
     var random_num = Math.floor(Math.random() * Math.floor(3));
+    
+    //Mapping move to Type
     var move_map = {0:"r",1:"p",2:"s"};
     var computer_move = move_map[random_num];
     
@@ -66,7 +71,7 @@ function game(val){
 }
 
 
-
+//Main Function taking input from user click
 function main(){
     rock_div.onclick = function() {
         game("r");
